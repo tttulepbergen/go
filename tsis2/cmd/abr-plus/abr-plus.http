@@ -1,0 +1,49 @@
+POST localhost:8081/api/v1/animals
+Content-Type: application/json
+
+{
+        Name        "Sema"
+		Age         "3"
+		Description "energetic and playful dog ready to bring joy to your home!"
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+
+
+GET localhost:8081/api/v1/animals/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+
+
+PUT localhost:8081/api/v1/animals/1
+Content-Type: application/json
+
+{
+  "description": true
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+
+DELETE localhost:8081/api/v1/animals/1
+Content-Type: application/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
